@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KZU break rooms</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//break-room.ch/matomo/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '1']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+    
+
+</head>
+<body>
+    <div class="container">
+        <div class="headerTitle">
+            <h1>Freie Räume</h1>
+        </div>
+        <label class="toggle-canceled">
+            <input type="checkbox" />
+            <span class="slider"></span>
+            <span class="toggle-text">Ausgefallene Räume anzeigen</span>
+        </label>
+        <br>
+        <h2>Derzeit freie Räume:</h2>
+        <div class="room-list" id="roomList">
+            
+        </div>
+        <br>
+        <h4>Blau = 2 Lektionen infolge frei</h4>
+    </div>
+
+    <footer>
+        <p>Alexander Rieser &bull; <a href="mailto:rieser.alex@me.com">rieser.alex@me.com</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

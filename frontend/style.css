@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    align-content: center;
+    justify-content: center;
+}
+
+.headerTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-container-consecutive{
+    display: flex;
+    width: 25%;
+    border: solid;
+    height: 30px;
+    border-color: #0026ff;
+    font-weight: bold;
+    border-radius: 8px;
+    border-width: 3px;
+    color: black;
+    padding: 10px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+.room-container {
+    display: flex;
+    width: 25%;
+    border: solid;
+    height: 30px;
+    border-color: #858585;
+    font-weight: bold;
+    border-radius: 8px;
+    border-width: 3px;
+    color: black;
+    padding: 10px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.room-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.room-list li {
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.room-list li:hover {
+    background-color: #f9f9f9;
+}
+
+.room-list li:last-child {
+    border-bottom: none;
+}
+
+.see-plan-btn-container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.see-plan-btn {
+    align-self: center;
+    display: block;
+    width: 50%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.see-plan-btn:hover {
+    background-color: #0056b3;
+}
+
+.blue-button {
+    background-color: #007bff; /* Bootstrap primary blue */
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    align-self: center;
+    justify-self: right;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.blue-button:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
+}
+
+.room-container-canceled{
+    display: flex;
+    width: 25%;
+    border: solid;
+    height: 30px;
+    border-color: #ff0000;
+    font-weight: bold;
+    border-radius: 8px;
+    border-width: 3px;
+    color: black;
+    padding: 10px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+.room-container-canceled {
+    display: none;
+    width: 25%;
+    border: solid;
+    height: 30px;
+    border-color: #ff0000;
+    font-weight: bold;
+    border-radius: 8px;
+    border-width: 3px;
+    color: black;
+    padding: 10px;
+    align-items: flex-start;
+    margin: 10px;
+}
+
+.show-canceled .room-container-canceled {
+    display: flex;
+}
+
+.toggle-canceled {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-canceled {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: auto;
+    height: 24px;
+}
+
+.toggle-canceled input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+    width: 50px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #ff0000;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-text {
+    padding-left: 55px;
+}
