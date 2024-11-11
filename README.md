@@ -19,4 +19,4 @@ Break-Room.ch could make life easier for students and staff at your school, too.
 
 ## Technical
 **Backend**
-The backend uses a GO-lang script to fetch the necessary lesson data from the official school website. This data is updated twice a week to ensure it’s always current. Each room’s availability is checked against a complete list of all school rooms to determine which are unoccupied during each lesson. The data is delivered to users via a simple FastAPI application. If you’d like more in-depth information about the site, you can check out the code on my [github](https://github.com/HelloAlex4/Break-room).
+The backend uses a GO-lang script to fetch the necessary lesson data from the official school website, it safes the Data into a SQLite3 db. This data is updated twice a week to ensure it’s always up to date. Each room’s availability is checked against a complete list of all school rooms to determine which are unoccupied during each lesson. The data is delivered to users via a simple FastAPI application. If you’d like more in-depth information about the site, you can check out the code on my [github](https://github.com/HelloAlex4/Break-room).
