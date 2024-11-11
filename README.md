@@ -2,7 +2,7 @@
 
 ## What is Break-Room.ch
 The [Break-Room](https://break-room.ch) website is a simple solution to a problem we faced at our school. The problem was that it was very difficult to find unoccupied rooms to work in quietly. Students often had to open each room to check if it was free, disrupting the classes inside. My solution to this was a website that always shows the empty rooms at any given time.
-The site is currently developed and maintained by me, with financial support from KZU.
+The site is currently developed and maintained by me, with financial support by KZU and other Schools.
   
 ## Additional Features
 In addition to displaying empty rooms, I have added several other features.
