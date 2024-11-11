@@ -27,6 +27,7 @@ func getRowCount(rows *sql.Rows) (int, error) {
 	return count, nil
 }
 
+//helper function
 func contains(slice []string, item string) bool {
 	for _, v := range slice {
 		if v == item {
@@ -36,6 +37,7 @@ func contains(slice []string, item string) bool {
 	return false
 }
 
+//helper function
 func TimeDifferenceInMinutes(time1, time2 string) (int, error) {
 	// Define the layout of the time format
 	layout := "15:04:05"
@@ -59,6 +61,7 @@ func TimeDifferenceInMinutes(time1, time2 string) (int, error) {
 	return minutes, nil
 }
 
+//helper funciton
 func openDB() {
 	var err error
 	db, err = sql.Open("sqlite3", "./brake-room.db")
@@ -95,6 +98,7 @@ func openDB() {
 	}
 }
 
+//get sturm session for further request
 func sendLoginRequest() []byte {
 	// Define the curl command as a string
 	curlCmd := `curl --path-as-is -i -s -k -X $'POST' \
@@ -121,6 +125,7 @@ func getreqeststring(byteInput []byte) []string {
 	return lines
 }
 
+//extract stumsession from return
 func extractSturmsession(lines []string) string {
 	var sturmSession string
 
@@ -137,6 +142,7 @@ func extractSturmsession(lines []string) string {
 	return sturmSession
 }
 
+//get lesson plan data with before gotten sturm session
 func sendDataRequest(sturmSession string) []byte {
 	start := time.Now()
 	// Find the last Monday
@@ -165,6 +171,7 @@ func sendDataRequest(sturmSession string) []byte {
 	}
 }
 
+//format data from server as lsit of rooms
 func getRoomsList(stringInput string) []string {
 	// Unmarshal into a map
 	var result map[string]interface{}
@@ -250,6 +257,7 @@ func getRoomsList(stringInput string) []string {
 	return rooms
 }
 
+//get time id to get current weeks data
 func getTimeID(time string, date string, endtime string) int {
 	minuteDifference, err := TimeDifferenceInMinutes(time, endtime)
 	if err != nil {
@@ -284,6 +292,7 @@ func getTimeID(time string, date string, endtime string) int {
 	}
 }
 
+//helper function
 func extractBody(byteInput []byte) string {
 	outputStr := string(byteInput)
 
@@ -303,6 +312,7 @@ func extractBody(byteInput []byte) string {
 	return ""
 }
 
+//compare ocupied rooms with room list
 func insertEmptyRooms() {
 	// Start a transaction
 	tx, err := db.Begin()
@@ -380,6 +390,7 @@ func insertEmptyRooms() {
 	}
 }
 
+//mark consecutive Rooms as consecutive
 func consecutiveRooms() {
 	// Start a transaction
 	tx, err := db.Begin()
@@ -473,6 +484,7 @@ func consecutiveRooms() {
 	}
 }
 
+//mark all canceled rooms as canceled
 func canceledRooms() {
 	// Start a transaction
 	tx, err := db.Begin()
@@ -516,26 +528,23 @@ func canceledRooms() {
 }
 
 func fullLoginRequest() string {
-	output := sendLoginRequest()
-	lines := getreqeststring(output)
-	sturmSession := extractSturmsession(lines)
+	output := sendLoginRequest()//first login request
+	lines := getreqeststring(output)//extract string
+	sturmSession := extractSturmsession(lines)//extract sturmsession
 	return sturmSession
 }
 
 func getRoomData(sturmSession string) {
-	output := sendDataRequest(sturmSession)
-	body := extractBody(output)
-	getRoomsList(body)
-	insertEmptyRooms()
-	consecutiveRooms()
-	canceledRooms()
+	output := sendDataRequest(sturmSession)//send room plan request
+	body := extractBody(output)//extract rooms
+	getRoomsList(body)//format as lsit
+	insertEmptyRooms()//insert empty rooms into db
+	consecutiveRooms()//insert consecutive rooms into db
+	canceledRooms()//insert canceled rooms into db
 }
 
 func main() {
-	sturmSession := fullLoginRequest()
+	sturmSession := fullLoginRequest()//simulate login request
 
-	getRoomData(sturmSession)
+	getRoomData(sturmSession)//get and log data
 }
-
-// testing gitgnore
-//test
